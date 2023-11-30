@@ -8,17 +8,21 @@ using ProductManagementApp.Services;
 
 namespace ProductManagementApp.Controllers;
 
+// ProductController class defines the API endpoints for managing products.
 [ApiController]
 [Route("api/products")]
 public class ProductController : ControllerBase
 {
+    // Private field to hold the ProductService instance for interacting with products.
     private readonly IProductService _productService;
 
+    // Constructor that initializes the ProductController with an instance of IProductService.
     public ProductController(IProductService productService)
     {
         _productService = productService;
     }
 
+    // GET endpoint to retrieve all products.
     [HttpGet]
     public IActionResult GetProducts()
     {
@@ -26,6 +30,7 @@ public class ProductController : ControllerBase
         return Ok(products);
     }
 
+    // GET endpoint to retrieve a product by its unique identifier.
     [HttpGet("{id}")]
     public IActionResult GetProductById(int id)
     {
@@ -40,6 +45,7 @@ public class ProductController : ControllerBase
         }
     }
 
+    // POST endpoint to create a new product.
     [HttpPost]
     public IActionResult CreateProduct([FromBody] Product newProduct)
     {
@@ -54,6 +60,7 @@ public class ProductController : ControllerBase
         }
     }
 
+    // PUT endpoint to update an existing product.
     [HttpPut("{id}")]
     public IActionResult UpdateProduct(int id, [FromBody] Product updatedProduct)
     {
@@ -68,6 +75,7 @@ public class ProductController : ControllerBase
         }
     }
 
+    // DELETE endpoint to delete a product by its unique identifier.
     [HttpDelete("{id}")]
     public IActionResult DeleteProduct(int id)
     {
@@ -82,6 +90,7 @@ public class ProductController : ControllerBase
         }
     }
 
+    // GET endpoint to retrieve products by name.
     [HttpGet("list")]
     public IActionResult GetProductsByName([FromQuery] string name)
     {
@@ -89,6 +98,7 @@ public class ProductController : ControllerBase
         return Ok(productsByName);
     }
 
+    // GET endpoint to retrieve sorted products by name.
     [HttpGet("list-sorted")]
     public IActionResult GetProductsByNameAndSort([FromQuery] string name, [FromQuery] string sort)
     {

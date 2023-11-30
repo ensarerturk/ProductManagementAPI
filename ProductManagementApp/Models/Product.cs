@@ -1,18 +1,22 @@
 ﻿namespace ProductManagementApp.Models;
 
+// Product class represents the basic data model for a product.
 public class Product
 {
+    // Private fields representing the identifier of the product.
     private int _id;
     private string _name;
     private decimal _price;
 
+    // Constructor of the Product class that initializes the product properties.
     public Product(int id, string name, decimal price)
     {
         _id = id;
         _name = name;
         _price = price;
     }
-
+    
+    // A property providing access to the identifier of the product.
     public int Id
     {
         get => _id;
